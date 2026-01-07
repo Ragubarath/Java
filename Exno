@@ -1,0 +1,529 @@
+EX.NO.: 2
+DATE: PAYSLIP GENERATION USING INHERITANCE
+AIM:
+To develop a java application to generate pay slip for different category of employees using
+theconcept of inheritance.
+ALGORITHM:
+Step 1: Start the program.
+Step 2: Create the class Employee with name, Empid, address, mailid, mobileno as fields. 
+Step 3: Inherit the classes Programmer, AssistantProfessor, AssociateProfessorand 
+Professor from employeeclass.
+Step 4: Add Basic Pay (BP) as the member of all the inherited classes.
+Step 5: Calculate DA as 97% of BP, HRA as 10% of BP, PF as 12% of BP, Staff club fund 
+as 0.1% of BP.
+Step 6: Calculate gross salary and net salary. 
+Grosssal=BP+HRA+DA
+NetSal=GrossSal-(PF+Staff Club Fund)
+Step 7:Create a test class PaySlip. Reademployee details, choice and basic pay from 
+user.
+Step 8:Based on user choice and input create the object and invoke the necessary methods 
+to display the Payslip.
+Step 9: Stop the program.
+PROGRAM:
+PaySlip.java
+import java.util.Scanner; 
+class Employee
+{
+String Emp_name,Mail_id,Address,Emp_id, Mobile_no; 
+double BP,GP,NP,DA,HRA,PF,CF;
+Scanner get = new Scanner(System.in); 
+Employee()
+{
+System.out.println("Enter Name of the Employee:"); 
+Emp_name = get.nextLine();
+System.out.println("Enter Address of the Employee:"); 
+Address = get.nextLine();
+System.out.println("Enter ID of the Employee:"); 
+Emp_id = get.nextLine(); 
+System.out.println("Enter Mobile Number:"); 
+Mobile_no = get.nextLine();
+System.out.println("Enter E-Mail ID of the Employee :"); 
+Mail_id = get.nextLine();
+}
+void display()
+{
+System.out.println("Employee Name: "+Emp_name); 
+System.out.println("Employee Address: "+Address); 
+System.out.println("Employee ID: "+Emp_id); 
+System.out.println("Employee Mobile Number: "+Mobile_no); 
+System.out.println("Employee E-Mail ID"+Mail_id); 
+DA=BP*0.97;
+HRA=BP*0.10; 
+PF=BP*0.12; 
+CF=BP*0.01; 
+GP=BP+DA+HRA; 
+NP=GP-PF-CF;
+System.out.println("Basic Pay :"+BP); 
+System.out.println("Dearness Allowance : "+DA); 
+System.out.println("House Rent Allowance :"+HRA); 
+System.out.println("Provident Fund :"+PF); 
+System.out.println("Club Fund :"+CF);
+System.out.println("Gross Pay :"+GP); 
+System.out.println("Net Pay :"+NP);
+}
+}
+class Programmer extends Employee
+{
+Programmer()
+{
+System.out.println("Enter Basic pay of the Programmer:"
+System.out.println("Enter Basic pay of the Programmer:"); 
+BP = get.nextFloat();
+}
+void display()
+{
+System.out.println("=============================="+"\n"+"Programmar 
+Pay Slip"+"\n"+"=============================="+"\n");
+super.display();
+}
+}
+class AssistantProfessor extends Employee
+{
+AssistantProfessor()
+{
+System.out.println("Enter Basic pay of the Assistant Professor:"); 
+BP = get.nextFloat();
+}
+void display()
+{
+System.out.println("=============================="+"\n"+"Assistant ProfessorPay 
+Slip"+"\n"+"=============================="+"\n");
+super.display();
+}
+}
+class AssociateProfessor extends Employee
+{
+AssociateProfessor()
+{
+System.out.println("Enter Basic pay of the Professor:"); 
+BP = get.nextFloat();
+}
+void display()
+{
+System.out.println("=============================="+"\n"+"Associate 
+Professor Pay Slip"+"\n"+"=============================="+"\n");
+super.display();
+}
+}
+class Professor extends Employee
+{
+Professor()
+{
+System.out.println("Enter Basic pay of the Professor:"); 
+BP = get.nextFloat();
+}
+void display()
+{
+System.out.println("=============================="+"\n"+"Professor Pay 
+Slip"+"\n"+"=============================="+"\n");
+super.display();
+}
+}
+class Payslip
+{
+public static void main(String[] args)
+{
+char ans;
+Scanner sc = new Scanner(System.in); 
+do
+{
+System.out.println("Main Menu");
+System.out.println("1. Programmer \n2. Assistant Professor \n3. Associate 
+Professor \n4. Professor");
+System.out.println("Enter your choice: ");
+int choice=sc.nextInt(); 
+switch(choice)
+{
+case 1:
+case 2:
+case 3:
+case 4:
+}
+Programmer p=new Programmer(); 
+p.display();
+break;
+AssistantProfessorap=new AssistantProfessor(); 
+ap.display();
+break;
+AssociateProfessor asp=new AssociateProfessor(); 
+asp.display();
+break;
+Professor PR=new Professor(); 
+PR.display();
+break;
+System.out.println("Do you want to go to Main Menu?(y/n): "); 
+ans=sc.next().charAt(0);
+}while(ans=='y'||ans=='Y'); 
+sc.close();
+}
+}
+OUTPUT:
+Main Menu
+1. Programmer
+2. Assistant Professor
+3. Associate Professor
+4. Professor
+Enter your choice:
+1
+Enter Name of the Employee: 
+Raja
+Enter Address of the Employee: 
+Chennai
+Enter ID of the Employee: 
+12345
+Enter Mobile Number: 
+9876543210
+Enter E-Mail ID of the Employee : 
+abc@xyz.com
+Enter Basic pay of the Programmer:
+56000
+==============================
+Programmar Pay Slip
+==============================
+Employee Name: Raja 
+Employee Address: Chennai 
+Employee ID: 12345
+Employee Mobile Number: 9876543210 
+Employee E-Mail IDabc@xyz.com
+Basic Pay :56000.0
+Dearness Allowance : 54320.0 
+House Rent Allowance :5600.0 
+Provident Fund :6720.0
+Club Fund :560.0
+Gross Pay :115920.0
+Net Pay :108640.0
+Do you want to go to Main Menu?(y/n):
+n
+RESULT:
+Thus, the Java application to generate pay slip for different category of employees was 
+implementedusing inheritance and the program was executed successfully
+
+
+
+EX.NO.: 4
+DATE: MULTITHREADING IMPLEMENTATION
+AIM:
+To write a java program to implement a multi-threaded application.
+ALGORITHM:
+Step 1: Start the program.
+Step 2: Create a class even which implements first thread that computes the square of the 
+number.
+Step 3:Therun() method implements the code to be executed when thread gets executed. 
+Step 4:Create a class odd which implements second thread that computes the cube of the 
+number.
+Step 5:Create a third thread that generates random number. If the random number is even, it 
+displaysthe square of the number. If the random number generated is odd, it displays
+the cube of thegiven number.
+Step 6: The Multithreading is performed and the task switched between multiple threads.
+Step 7: The sleep () method makes the thread to suspend for the specified time.
+Step 8: Stop the program.
+PROGRAM:
+MultiThread.java
+import java.util.*;
+class even implements Runnable
+{
+public int x; 
+public even(int x)
+{
+this.x = x;
+}
+public void run()
+{
+System.out.println("New Thread "+ x +" is EVEN and Square of " + x + " is: "
++ x * x);
+}
+}
+class odd implements Runnable
+{
+public int x;
+public odd(int x)
+{
+this.x = x;
+}
+public void run()
+{
+System.out.println("New Thread "+ x +" is ODD and Cube of " + x + " is: " + 
+x * x * x);
+}
+}
+class A extends Thread
+{
+public void run()
+{
+intnum = 0;
+Random r = new Random(); 
+try
+{
+for (inti = 0; i< 5; i++)
+{
+num = r.nextInt(100);
+System.out.println("Main Thread and Generated Number is " + 
+num);
+if (num % 2 == 0)
+{
+}
+else
+{
+}
+Thread t1 = new Thread(new even(num)); 
+t1.start();
+Thread t2 = new Thread(new odd(num)); 
+t2.start();
+Thread.sleep(1000);
+System.out.println(" ");
+}
+}
+catch (Exception ex)
+{
+System.out.println(ex.getMessage());
+}
+}
+}
+public classMultiThread
+{
+public static void main(String[] args)
+{
+A a = new A(); 
+a.start();
+}
+}
+OUTPUT:
+Main Thread and Generated Number is 33
+New Thread 33 is ODD and Cube of 33 is: 35937
+Main Thread and Generated Number is 31
+New Thread 31 is ODD and Cube of 31 is: 29791
+Main Thread and Generated Number is 25
+New Thread 25 is ODD and Cube of 25 is: 15625
+Main Thread and Generated Number is 43
+New Thread 43 is ODD and Cube of 43 is: 79507
+Main Thread and Generated Number is 14
+New Thread 14 is EVEN and Square of 14 is: 196
+
+RESULT:
+Thus, the java program to implement multithreaded application was executed successfully.
+
+EX.NO.: 5
+FILE OPERATIONS DATE:
+AIM:
+To write a java program to copy the contents of one file to another file using file operations.
+ALGORITHM:
+Step 1: Start the program.
+Step 2: Create a class FileCopy. Get the source and destination file names from the user.
+Step 3: Create object of FileInputStream by passing the source file name.
+Step 4: Using read() method read the contents of the file till end of the file.
+Step 5: Create object of FileOutputStream by passing the second file to the constructor.
+Step 6: Use write() method to write the contents to the destination file.
+Step 7: Close the file input and output stream using close() method.
+Step 8: Display the contents of both files.
+Step 9: Stop the program.
+PROGRAM:
+FileCopy.java
+import java.io.*; 
+class CopyFile
+{
+public static void main(String args[]) throws IOException
+{
+inti;
+FileInputStream fin = null; 
+FileOutputStreamfout = null; 
+if(args.length != 2)
+{
+System.out.println("Usage: CopyFile from to"); 
+return;
+}
+System.out.println("Displaying contents of "+ args[0]+"\n"); 
+try
+{
+fin = new FileInputStream(args[0]); 
+do
+40
+{
+i = fin.read();
+if(i != -1)
+System.out.print((char) i);
+} while(i != -1);
+}
+catch(IOException e)
+{
+}
+finally
+{
+System.out.println("Error Reading File");
+try
+{
+fin.close();
+}
+catch(IOException e)
+{
+System.out.println("Error Closing File");
+}
+}
+System.out.println("\nCopying contents of "+ args[0] + "to " + args[1]+"\n"); 
+try
+{
+fin = new FileInputStream(args[0]); 
+fout = new FileOutputStream(args[1]); 
+do
+{
+i = fin.read();
+if(i != -1) fout.write(i);
+} while(i != -1);
+}
+catch(IOException e)
+{
+}
+finally
+{
+System.out.println("I/O Error: " + e);
+try
+{
+if(fin != null)
+fin.close();
+}
+catch(IOException e2)
+41
+{
+}
+try
+{
+}
+System.out.println("Error Closing Input File");
+if(fout != null)
+fout.close();
+catch(IOException e2)
+{
+System.out.println("Error Closing Output File");
+}
+}
+System.out.println("\nFile Copied\n"); 
+System.out.println("\nDisplaying contents of "+ args[1]+"\n"); 
+try
+{
+fin = new FileInputStream(args[1]); 
+do
+{
+i = fin.read();
+if(i != -1)
+System.out.print((char) i);
+} while(i != -1);
+}
+catch(IOException e)
+{
+}
+finally
+{
+System.out.println("Error Reading File");
+try
+{
+fin.close();
+}
+catch(IOException e)
+{
+System.out.println("Error Closing File");
+}
+}
+}
+}
+42
+OUTPUT:
+R:\oop>javac CopyFile.java
+R:\oop>java CopyFile FIRST.txt SECOND.txt 
+Displaying contents of FIRST.txt
+To use this program, specify the name
+of the source file and the destination file.
+For example, to copy a file called FIRST.TXT
+to a file called SECOND.TXT, use the following 
+command line.
+java CopyFile FIRST.TXT SECOND.TXT 
+Copying contents of FIRST.txt to SECOND.txt 
+File Copied
+Displaying contents of SECOND.txt
+To use this program, specify the name
+of the source file and the destination file.
+For example, to copy a file called FIRST.TXT
+to a file called SECOND.TXT, use the following 
+command line.
+java CopyFile FIRST.TXT SECOND.TXT 
+R:\oop>
+RESULT:
+Thus, the java program to copy the contents of one file to another file using file was written, 
+executed and verified.
+43
+
+
+EX.NO.: 6
+GENERIC CLASS DATE:
+AIM:
+To write a java program to find the maximum and minimum value from the given type of
+elements using ageneric function.
+ALGORITHM:
+Step 1: Start the program.
+Step 2: Create a class Myclass to implement generic class and generic methods.
+Step 3: Get the set of the values belonging to specific data type.
+Step 4:Create the objects of the class to hold integer, character and double values.
+Step 5:Create the method to compare the values and find the maximum value stored in the 
+array.
+Step 6: Invoke the method with integer, character, double and string values. The output will 
+be displayedbased on the data type passed to the method.
+Step 7:Stop the program.
+PROGRAM:
+GenericsDemo.java
+class MyClass<T extends Comparable<T>>
+{
+T[] vals; 
+MyClass(T[] obj)
+{
+vals = obj;
+}
+public T min()
+{
+T v = vals[0];
+for(inti=1; i<vals.length; i++) 
+if(vals[i].compareTo(v) < 0)
+v = vals[i];
+return v;
+}
+public T max()
+{
+T v = vals[0];
+for(inti=1; i<vals.length;i++) 
+if(vals[i].compareTo(v) > 0)
+v = vals[i];
+44
+return v;
+}
+}
+class GenericsDemo
+{
+public static void main(String args[])
+{
+Integer num[]={10,2,5,4,6,1}; 
+Character ch[]={'v','p','s','a','n','h'};
+Double d[]={20.2,45.4,71.6,88.3,54.6,10.4};
+String str[]= {"hai","how","are","you"}; 
+MyClass<Integer>iob = new MyClass<Integer>(num); 
+MyClass<Character> cob = new MyClass<Character>(ch); 
+MyClass<Double>dob = new MyClass<Double>(d); 
+MyClass<String>sob=new MyClass<String>(str); 
+System.out.println("Max value in num: " + iob.max()); 
+System.out.println("Min value in num: " + iob.min()); 
+System.out.println("Max value in ch: " + cob.max()); 
+System.out.println("Min value in ch: " + cob.min()); 
+System.out.println("Max value in d: " + dob.max()); 
+System.out.println("Min value in d: " + dob.min()); 
+System.out.println("Max value in str: " + sob.max()); 
+System.out.println("Min value in str: " + sob.min());
+}
+}
+OUTPUT:
+Max value in num: 10 
+Min value in num: 1 
+Max value in ch: v 
+Min value in ch: a 
+Max value in d: 88.3 
+Min value in d: 10.4 
+Max value in str: you 
+Min value in str: are
+RESULT:
+Thus, the Java program to find the maximum and minimum value from the given type of 
+elements was implemented using generics and executed successfully.
