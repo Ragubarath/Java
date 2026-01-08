@@ -1,0 +1,121 @@
+Ex.No: 3	Applications using TCP sockets like: Echo client and echo server,
+Chat and File Transfer
+
+AIM
+To write a java program for application using TCP Sockets Links
+
+ALGORITHM
+
+Client
+1.	Start
+2.	Create the TCP socket
+3.	Establish connection with the server
+4.	Get the message to be echoed from the user
+ 
+5.	Send the message to the server
+6.	Receive the message echoed by the server
+7.	Display the message received from the server
+8.	Terminate the connection
+9.	Stop
+
+Server
+1.	Start
+2.	Create TCP socket, make it a listening socket
+3.	Accept the connection request sent by the client for connection establishment
+4.	Receive the message sent by the client
+5.	Display the received message
+6.	Send the received message to the client from which it receives
+7.	Close the connection when client initiates termination and server becomes a listening server, waiting for clients.
+8.	Stop.
+
+PROGRAM:
+EchoServer.java
+ import java.net.*;
+import java.lang.*;
+import java.io.*;
+
+public class Server {
+    public static final int PORT = 4000;
+
+    public static void main(String args[]) {
+        ServerSocket serversock = null;
+        Socket sock = null;
+
+        try {
+            serversock = new ServerSocket(PORT);
+            System.out.println("Server started: " + serversock);
+
+            try {
+                sock = serversock.accept();
+                System.out.println("Client connected: " + sock);
+
+                DataInputStream dis = new DataInputStream(sock.getInputStream());
+                System.out.println(dis.readLine());
+
+                PrintStream dos = new PrintStream(sock.getOutputStream());
+                dos.println("Hello from server");
+                dos.close();
+                dis.close();
+
+            } catch (SocketException se) {
+                System.out.println("Server socket problem: " + se.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Couldn't start: " + e.getMessage());
+        }
+
+        System.out.println("Connection from: " + sock.getInetAddress());
+    }
+}
+
+EClient.java 
+import java.lang.*;
+import java.io.*;
+import java.net.*;
+import java.net.InetAddress;
+
+class Client {
+    public static void main(String args[]) {
+        Socket sock = null;
+        DataInputStream dis = null;
+        PrintStream ps = null;
+
+        System.out.println("Trying to connect");
+
+        try {
+            sock = new Socket(InetAddress.getLocalHost(), Server.PORT);
+            ps = new PrintStream(sock.getOutputStream());
+            ps.println("Hi from client");
+
+            dis = new DataInputStream(sock.getInputStream());
+            System.out.println(dis.readLine());
+        }
+        catch (SocketException e) {
+            System.out.println("SocketException: " + e);
+        }
+        catch (IOException e) {
+            System.out.println("IOException: " + e);
+        }
+        finally {
+            try {
+                sock.close();
+            }
+            catch (IOException fe) {
+                System.out.println("Close Error: " + fe.getMessage());
+            }
+        }
+    }
+}
+
+OUTPUT
+Server
+C:\Program Files\Java\jdk1.5.0\bin>javac EServer.java C:\Program Files\Java\jdk1.5.0\bin>java EServer C:\Program Files\Java\jdk1.5.0\bin>
+Client
+C:\Program Files\Java\jdk1.5.0\bin>javac EClient.java C:\Program Files\Java\jdk1.5.0\bin>java EClient Client: Hai Server
+Server:Hai Server Client: Hello Server:Hello Client:end Server:end Client:ds
+Socket Closed!
+
+RESULT:
+Thus the java application program using TCP Sockets was developed and executed successfully.
+
