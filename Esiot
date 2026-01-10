@@ -1,0 +1,159 @@
+AIM:
+
+To write and execute the ALU program using the Keil simulator.
+
+SOFTWARE TOOLS REQUIRED:
+
+S.No Software Requirements Quantity
+
+1 Keil μvision5 IDE 1
+
+PROCEDURE
+
+1. Create a new project, go to “Project” and close the current project “Close Project”.
+
+
+2. Next Go to the Project New μVision Project and Create New Project Select Device for
+
+
+
+Target.
+
+3. Select the device AT89C51ED2 or AT89C51 or AT89C52
+
+
+4. Add Startup file Next go to “File” and click “New”.
+
+
+5. Write a program on the editor window and save it with .asm extension.
+
+
+6. Add this source file to Group and click on “Build Target” or F7.
+
+
+7. Go to debugging mode to see the result of simulation by clicking Run or step run.
+
+
+
+PROGRAM:
+
+ORG 0000H
+
+CLR C
+
+//ADDITION
+
+MOV A, #20H
+
+ADD A, #21H
+
+MOV 41H, A
+
+//SUBTRACTION
+
+MOV A, #20H
+
+SUBB A, #18H
+
+MOV 42H, A
+
+//MULTIPLICATION
+
+MOV A, #03H
+
+MOV B, #04H
+
+MUL AB
+
+MOV 43H, A
+
+//DIVISION
+
+MOV A, #95H
+
+MOV B, #10H
+
+DIV AB
+
+MOV 44H, A
+
+MOV 45H, B
+
+//AND
+
+MOV A, #25H
+
+MOV B, #12H
+
+ANL A, B
+
+MOV 46H, A
+
+//OR
+
+MOV A, #25H
+
+MOV B, #15H
+
+ORL A, B
+
+MOV 47H, A
+
+//XOR
+
+MOV A, #45H
+
+MOV B, #67H
+XRL A, B
+
+MOV 48H, A
+
+//NOT
+
+MOV A, #45H
+
+CPL A
+
+MOV 49H, A
+
+END
+
+OUTPUT:
+
+Addition: 204 +21 H
+
+=41 H (65 decimal)
+
+Subtraction: 20H-12H
+
+= 084 (8 decimal)
+
+multiplication: 03н хочн
+
+= OCH (12 derimal) RAM PAR HJ = OCH
+
+Division: Orvordinator = 09H (9) RAM (444) Remainder = 05 H (5) RAM (45H)
+
+AND:
+
+AND=00 H(0)
+
+RAM: [4643=0014
+
+OR :
+
+36 H (33 decimal)
+
+RAM (47 H]:35 N
+
+NOT: Not operation = BAH (186 decimal)
+
+
+stared at RAM C49HJ = BAH
+
+
+RESULT:
+
+Thus, The ALU operation Lua S
+
+executed successfully.
